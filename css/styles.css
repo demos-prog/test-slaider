@@ -50,8 +50,15 @@
   padding: 8px 15px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
+  color: cornsilk;
   background-color: #1ed278;
   border-radius: 5px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.prev:hover, .next:hover {
+  background-color: #1b8d54;
 }
 
 #slideForm {
