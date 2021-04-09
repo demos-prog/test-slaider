@@ -20,6 +20,12 @@ sliderBody.style.width =
 inpNumberOfSlides.addEventListener("change", ()=>{
   if (isNaN(+inpNumberOfSlides.value)) {
     alert("Enter a NUMBER pls !!!!");
+    inpNumberOfSlides.value = "";
+    return;
+  }
+  if(+inpNumberOfSlides.value <= 0){
+    alert("Enter a POSITIVE number pls !!!!");
+    inpNumberOfSlides.value = "";
     return;
   }
   numbOfslidesToShowOnce = +inpNumberOfSlides.value;
@@ -50,5 +56,5 @@ document.querySelector("#prev").addEventListener("click", () => {
 });
 
 document.querySelector('#imgButton').addEventListener('click', ()=>{
-  console.log("hello");
+  alert("hello");
 })
