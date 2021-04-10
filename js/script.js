@@ -56,10 +56,6 @@ document.querySelector("#prev").addEventListener("click", () => {
     (-startSlide * viewport) / numbOfslidesToShowOnce + "px";
 });
 
-document.querySelector("#imgButton").addEventListener("click", () => {
-  alert("hello");
-});
-
 // swipe - start =====================================
 let mouseIsDown = false;
 
@@ -87,8 +83,6 @@ document.addEventListener("pointerup", (e) => {
   } else {
     deltaX = sliderBody.offsetWidth;
   }
-  console.log(Math.abs(deltaX));
-  console.log(sliderBody.offsetWidth / numbOfslidesToShowOnce);
   if (deltaX > 0) deltaX = 0;
 
   sliderBody.style.left =
@@ -97,3 +91,14 @@ document.addEventListener("pointerup", (e) => {
   mouseIsDown = false;
 });
 // swipe - end ======================================
+
+// go-btns - start ==========================
+let btnses = document.querySelectorAll(".runBtn");
+for (const item of btnses) {
+  item.addEventListener("click", (e)=> {
+    startSlide = +e.target.dataset.number;
+    sliderBody.style.left =
+      (-startSlide * viewport) / numbOfslidesToShowOnce + "px";
+  });
+}
+// go-end - start ==========================
