@@ -74,18 +74,22 @@ viewportBody.addEventListener("pointerdown", (e) => {
   mouseIsDown = true;
 });
 
+let deltaX = 0;
+
 document.addEventListener("pointerup", (e) => {
   endX = e.clientX;
 
-  if (mouseIsDown) {
-    sliderBody.style.left =
-      (-startSlide * viewport) / numbOfslidesToShowOnce +
-      (endX - startX) +
-      "px";
+  if (mouseIsDown && Math.abs(deltaX) <= sliderBody.offsetWidth/numbOfslidesToShowOnce) {
+    deltaX += endX - startX;
+  } else {
+    deltaX = sliderBody.offsetWidth;
   }
 
-  console.log(startX - endX);
+  if (deltaX > 0) deltaX = 0;
+
+  sliderBody.style.left =
+    (-startSlide * viewport) / numbOfslidesToShowOnce + deltaX + "px";
+
   mouseIsDown = false;
 });
-
 // swipe - end
