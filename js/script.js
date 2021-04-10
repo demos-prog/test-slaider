@@ -60,7 +60,7 @@ document.querySelector("#imgButton").addEventListener("click", () => {
   alert("hello");
 });
 
-// swipe - start
+// swipe - start =====================================
 let mouseIsDown = false;
 
 viewportBody.ondragstart = function () {
@@ -74,17 +74,21 @@ viewportBody.addEventListener("pointerdown", (e) => {
   mouseIsDown = true;
 });
 
-let deltaX = 0;
+var deltaX = 0;
 
 document.addEventListener("pointerup", (e) => {
   endX = e.clientX;
 
-  if (mouseIsDown && Math.abs(deltaX) <= sliderBody.offsetWidth/numbOfslidesToShowOnce) {
+  if (
+    mouseIsDown &&
+    Math.abs(deltaX) <= sliderBody.offsetWidth / numbOfslidesToShowOnce
+  ) {
     deltaX += endX - startX;
   } else {
     deltaX = sliderBody.offsetWidth;
   }
-
+  console.log(Math.abs(deltaX));
+  console.log(sliderBody.offsetWidth / numbOfslidesToShowOnce);
   if (deltaX > 0) deltaX = 0;
 
   sliderBody.style.left =
@@ -92,4 +96,4 @@ document.addEventListener("pointerup", (e) => {
 
   mouseIsDown = false;
 });
-// swipe - end
+// swipe - end ======================================
