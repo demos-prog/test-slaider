@@ -1,11 +1,12 @@
 "use strict";
 let viewport = document.getElementById("viewport").offsetWidth;
+let viewportBody = document.getElementById("viewport");
 let sliderBody = document.querySelector(".sliderBody");
 let slides = document.querySelectorAll(".slide");
 let inpNumberOfSlides = document.querySelector("#inpNumberOfSlides");
 let outCurrenNumberOfSlides = document.querySelector(
   "#outCurrenNumberOfSlides"
-); 
+);
 
 let numbOfslidesToShowOnce = 1;
 let numberOfSlides = slides.length;
@@ -17,13 +18,13 @@ sliderBody.style.width =
   (viewport * numberOfSlides) / numbOfslidesToShowOnce + "px";
 // ==========
 
-inpNumberOfSlides.addEventListener("change", ()=>{
+inpNumberOfSlides.addEventListener("change", () => {
   if (isNaN(+inpNumberOfSlides.value)) {
     alert("Enter a NUMBER pls !!!!");
     inpNumberOfSlides.value = "";
     return;
   }
-  if(+inpNumberOfSlides.value <= 0){
+  if (+inpNumberOfSlides.value <= 0) {
     alert("Enter a POSITIVE number pls !!!!");
     inpNumberOfSlides.value = "";
     return;
@@ -55,6 +56,36 @@ document.querySelector("#prev").addEventListener("click", () => {
     (-startSlide * viewport) / numbOfslidesToShowOnce + "px";
 });
 
-document.querySelector('#imgButton').addEventListener('click', ()=>{
+document.querySelector("#imgButton").addEventListener("click", () => {
   alert("hello");
-})
+});
+
+// swipe - start
+let mouseIsDown = false;
+
+viewportBody.ondragstart = function () {
+  return false;
+};
+let startX = 0;
+let endX = 0;
+
+viewportBody.addEventListener("pointerdown", (e) => {
+  startX = e.clientX;
+  mouseIsDown = true;
+});
+
+document.addEventListener("pointerup", (e) => {
+  endX = e.clientX;
+
+  if (mouseIsDown) {
+    sliderBody.style.left =
+      (-startSlide * viewport) / numbOfslidesToShowOnce +
+      (endX - startX) +
+      "px";
+  }
+
+  console.log(startX - endX);
+  mouseIsDown = false;
+});
+
+// swipe - end
