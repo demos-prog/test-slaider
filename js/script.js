@@ -95,10 +95,12 @@ document.addEventListener("pointerup", (e) => {
 // go-btns - start ==========================
 let btnses = document.querySelectorAll(".runBtn");
 for (const item of btnses) {
-  item.addEventListener("click", (e)=> {
+  item.addEventListener("click", (e) => {
+    document.querySelector('.active').classList.remove("active");
     startSlide = +e.target.dataset.number;
     sliderBody.style.left =
       (-startSlide * viewport) / numbOfslidesToShowOnce + "px";
+    e.target.classList.add("active");
   });
 }
 // go-end - start ==========================

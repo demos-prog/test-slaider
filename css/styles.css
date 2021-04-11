@@ -28,7 +28,7 @@
 
 .buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: 150px;
   margin: 0 auto;
 }
@@ -71,7 +71,7 @@
   width: -webkit-min-content;
   width: min-content;
   display: flex;
-  margin: 0 auto 40px;
+  margin: 0 20px;
 }
 
 .runBtn {
@@ -83,7 +83,15 @@
   border-radius: 5px;
   background-color: #100ea5;
 }
+.runBtn:hover {
+  outline: 2px solid #e7008e;
+  outline-style: dashed;
+}
 
 .runBtn:nth-child(1) {
   margin-left: 0;
+}
+
+.active {
+  background-color: crimson;
 }
