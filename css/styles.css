@@ -10,7 +10,6 @@
   position: relative;
   transition: 1000ms;
   display: flex;
-  justify-content: start;
   flex-wrap: nowrap;
 }
 
@@ -79,13 +78,14 @@
   cursor: pointer;
   color: #dfc7c7;
   margin-left: 20px;
-  padding: 10px;
+  padding: 10px 15px;
   border-radius: 5px;
   background-color: #100ea5;
 }
 .runBtn:hover {
-  outline: 2px solid #e7008e;
+  outline: 3px solid #e7008e;
   outline-style: dashed;
+  outline-offset: 3px;
 }
 
 .runBtn:nth-child(1) {
