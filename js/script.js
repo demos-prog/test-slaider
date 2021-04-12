@@ -37,21 +37,25 @@ inpNumberOfSlides.addEventListener("change", () => {
 });
 
 document.querySelector("#next").addEventListener("click", () => {
+  document.querySelector(".active").classList.remove("active");
   if (startSlide < numberOfSlides - 1) {
     startSlide++;
   } else {
     startSlide = 0;
   }
+  document.getElementById(startSlide).classList.add("active");
   sliderBody.style.left =
     (-startSlide * viewport) / numbOfslidesToShowOnce + "px";
 });
 
 document.querySelector("#prev").addEventListener("click", () => {
+  document.querySelector(".active").classList.remove("active");
   if (startSlide > 0) {
     startSlide--;
   } else {
     startSlide = numberOfSlides - 1;
   }
+  document.getElementById(startSlide).classList.add("active");
   sliderBody.style.left =
     (-startSlide * viewport) / numbOfslidesToShowOnce + "px";
 });
@@ -96,7 +100,7 @@ document.addEventListener("pointerup", (e) => {
 let btnses = document.querySelectorAll(".runBtn");
 for (const item of btnses) {
   item.addEventListener("click", (e) => {
-    document.querySelector('.active').classList.remove("active");
+    document.querySelector(".active").classList.remove("active");
     startSlide = +e.target.dataset.number;
     sliderBody.style.left =
       (-startSlide * viewport) / numbOfslidesToShowOnce + "px";
